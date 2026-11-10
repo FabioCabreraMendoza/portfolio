@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Tema: claro por defecto, oscuro automático con prefers-color-scheme.
+   Un solo acento (cobalto) y un solo radio (--radius) en toda la página. */
+:root {
+  --bg: #f7f7f8;
+  --fg: #111114;
+  --muted: #5b5b66;
+  --line: #dcdce2;
+  --surface: #ececf0;
+  --accent: #2742e6;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d10;
+    --fg: #ededf0;
+    --muted: #9a9aa6;
+    --line: #26262d;
+    --surface: #16161b;
+    --accent: #8da2ff;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --radius-ui: var(--radius);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
